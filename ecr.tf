@@ -17,11 +17,11 @@ module "ecs" {
   }
 
   services = {
-    YOUR-TASKDEFINITION-NAME = { #task definition and service name -> #Change
+    kvin-service = { #task definition and service name -> #Change
       cpu    = 512
       memory = 1024
       container_definitions = {
-        YOUR-CONTAINER-NAME = { #container name -> Change
+        kvin-container = { #container name -> Change
           essential = true
           image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-ecr:latest"
           port_mappings = [
