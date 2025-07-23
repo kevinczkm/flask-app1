@@ -1,9 +1,6 @@
 name: Build, Push, and Deploy to ECS
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   deploy:
@@ -22,17 +19,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ vars.AWS_REGION }}
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-          terraform_version: 1.6.6
-
-    - name: Terraform Init
-      run: terraform init
-        
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
 
     - name: Login to Amazon ECR
       id: login-ecr
