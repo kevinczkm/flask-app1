@@ -20,6 +20,7 @@ module "ecs" {
     kvin-service = { #task definition and service name -> #Change
       cpu    = 512
       memory = 1024
+      task_role_arn = aws_iam_role.custom_task_role.arn
       container_definitions = {
         kvin-container = { #container name -> Change
           essential = true
